@@ -7,15 +7,19 @@ environment:
   sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
 
 dev_dependencies:
+  dart_code_metrics: ^4.15.2
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  surf_lint_rules: ^1.5.0
 
 flutter:
   uses-material-design: true
+
+  assets: 
+    - res/
