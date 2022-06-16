@@ -24,12 +24,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MySecondWidget(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  final String title;
+
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -41,25 +43,12 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +99,79 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
+}
+
+class MyFirstWidget extends StatelessWidget {
+  int counter = 0;
+
+  MyFirstWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    counter++;
+    // ignore: avoid_print
+    print(counter);
+    // ignore: avoid_print
+    print(runType(context));
+
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+
+  Object runType(BuildContext context) => context.runtimeType;
+}
+
+class MySecondWidget extends StatefulWidget {
+  const MySecondWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MySecondWidget> createState() => _MySecondWidgetState();
+}
+
+class _MySecondWidgetState extends State<MySecondWidget> {
+  int counter = 0;
+  @override
+  Widget build(BuildContext context) {
+    counter++;
+    // ignore: avoid_print
+    print(counter);
+    // ignore: avoid_print
+    print(runType(context));
+
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+
+  Object runType(BuildContext context) => context.runtimeType;
+}
+
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MyFirstWidget',
+      home: MyFirstWidget(),
     );
   }
 }
