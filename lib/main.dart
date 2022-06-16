@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstWidget(),
     );
   }
 }
@@ -111,5 +111,47 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+}
+
+class MyFirstWidget extends StatelessWidget {
+  int counter = 0;
+
+  MyFirstWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    counter++;
+    // ignore: avoid_print
+    print(counter);
+
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+}
+
+class MySecondWidget extends StatefulWidget {
+  const MySecondWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MySecondWidget> createState() => _MySecondWidgetState();
+}
+
+class _MySecondWidgetState extends State<MySecondWidget> {
+  int counter = 0;
+  @override
+  Widget build(BuildContext context) {
+    counter++;
+    // ignore: avoid_print
+    print(counter);
+
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
   }
 }
