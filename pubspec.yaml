@@ -27,4 +27,4 @@ flutter:
   fonts:
     - family: Roboto
       fonts: 
-        - assets: res/Roboto-Regular.ttf
+        - asset: res/Roboto-Regular.ttf
