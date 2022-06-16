@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+
+      home: const MySecondWidget(),
       home: MyFirstWidget(),
     );
   }
@@ -124,6 +126,9 @@ class MyFirstWidget extends StatelessWidget {
     counter++;
     // ignore: avoid_print
     print(counter);
+    // ignore: avoid_print
+    print(runType(context));
+
 
     return Container(
       child: const Center(
@@ -131,6 +136,8 @@ class MyFirstWidget extends StatelessWidget {
       ),
     );
   }
+
+  Object runType(BuildContext context) => context.runtimeType;
 }
 
 class MySecondWidget extends StatefulWidget {
@@ -147,11 +154,27 @@ class _MySecondWidgetState extends State<MySecondWidget> {
     counter++;
     // ignore: avoid_print
     print(counter);
+    // ignore: avoid_print
+    print(runType(context));
+
 
     return Container(
       child: const Center(
         child: Text('Hello!'),
       ),
+    );
+  }
+  Object runType(BuildContext context) => context.runtimeType;
+}
+
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MyFirstWidget',
+      home: MyFirstWidget(),
     );
   }
 }
