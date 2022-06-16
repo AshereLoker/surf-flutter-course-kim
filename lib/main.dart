@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+
       home: const MySecondWidget(),
+      home: MyFirstWidget(),
     );
   }
 }
@@ -127,6 +129,7 @@ class MyFirstWidget extends StatelessWidget {
     // ignore: avoid_print
     print(runType(context));
 
+
     return Container(
       child: const Center(
         child: Text('Hello!'),
@@ -154,13 +157,13 @@ class _MySecondWidgetState extends State<MySecondWidget> {
     // ignore: avoid_print
     print(runType(context));
 
+
     return Container(
       child: const Center(
         child: Text('Hello!'),
       ),
     );
   }
-
   Object runType(BuildContext context) => context.runtimeType;
 }
 
