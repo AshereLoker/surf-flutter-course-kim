@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/screen/sight_list_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MySecondWidget(),
+      home: const SightLightScreen(),
     );
   }
 }
