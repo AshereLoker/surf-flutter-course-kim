@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/app_colors.dart';
+import 'package:places/domain/mocks.dart';
+import 'package:places/screen/sight_card.dart';
 
 class SightLightScreen extends StatefulWidget {
   const SightLightScreen({Key? key}) : super(key: key);
@@ -8,18 +11,12 @@ class SightLightScreen extends StatefulWidget {
 }
 
 class _SightLightScreenState extends State<SightLightScreen> {
-  static const mainColor = Color(0xFF252849);
-  static const secondaryColor = Color(0xFF3B3E5B);
-  static const greenColor = Color(0xFF4CAF50);
-  static const yellowColor = Color(0xFFFCDD3D);
-  static const titleStyle = TextStyle(
+  static const TextStyle titleStyle = TextStyle(
     fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
     fontSize: 32,
     height: 36 / 32,
   );
-  final mainStyle = titleStyle.copyWith(color: mainColor);
-  final secondaryStyle = titleStyle.copyWith(color: secondaryColor);
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +25,19 @@ class _SightLightScreenState extends State<SightLightScreen> {
         toolbarHeight: 40 + 36 * 2,
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: RichText(
-          textAlign: TextAlign.left,
-          text: TextSpan(
-            text: 'С',
-            style: titleStyle.copyWith(color: greenColor),
-            children: [
-              TextSpan(text: 'писок', style: secondaryStyle),
-              TextSpan(
-                text: '\nи',
-                style: titleStyle.copyWith(color: yellowColor),
-              ),
-              TextSpan(text: 'нтересных', style: secondaryStyle),
-              TextSpan(text: ' м', style: mainStyle),
-              TextSpan(text: 'ест', style: secondaryStyle),
+        title: Text(
+          'Список \nинтересных мест',
+          style: titleStyle.copyWith(color: AppColors.secondary),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            for (final mock in mocks) ...[
+              SightCard(sight: mock),
             ],
-          ),
+          ],
         ),
       ),
     );
