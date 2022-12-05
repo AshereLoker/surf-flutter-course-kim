@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/app_colors.dart';
+import 'package:places/constants/app_text_styles.dart';
 import 'package:places/domain/sight.dart';
 
 class SightCard extends StatelessWidget {
@@ -20,28 +21,6 @@ class SightCard extends StatelessWidget {
     Color(0xffffb56b),
   ];
 
-  static const TextStyle _titleStyle = TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w500,
-    fontSize: 16,
-    height: 20 / 16,
-    color: AppColors.secondary,
-  );
-  static const TextStyle _detailsStyle = TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    fontSize: 14,
-    height: 18 / 14,
-    color: AppColors.secondary2,
-  );
-  static const TextStyle _typeStyle = TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.bold,
-    fontSize: 14,
-    height: 18 / 14,
-    color: AppColors.white,
-  );
-
   final Sight sight;
 
   double get cornerRadius => _cornerRadius;
@@ -58,6 +37,8 @@ class SightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = AppTextStyles();
+
     return Container(
       constraints: const BoxConstraints(minHeight: _minHeight),
       margin: const EdgeInsets.only(top: _innerPaddings),
@@ -79,12 +60,16 @@ class SightCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(sight.type.toLowerCase(), style: _typeStyle),
+                Text(
+                  sight.type.toLowerCase(),
+                  style: textStyle.small.withBold.withColor(AppColors.white),
+                ),
                 Container(
                   decoration: const BoxDecoration(
                     color: AppColors.white,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(_cornerRadius)),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(_cornerRadius / 2),
+                    ),
                   ),
                   height: _iconSize,
                   width: _iconSize,
@@ -103,9 +88,15 @@ class SightCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(sight.name, style: _titleStyle),
+                Text(
+                  sight.name,
+                  style: textStyle.text.withColor(AppColors.secondary),
+                ),
                 const SizedBox(height: _infoTextSpace),
-                Text(sight.details, style: _detailsStyle),
+                Text(
+                  sight.details,
+                  style: textStyle.small.withColor(AppColors.secondary2),
+                ),
               ],
             ),
           ),

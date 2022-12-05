@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/app_colors.dart';
+import 'package:places/constants/app_text_styles.dart';
 import 'package:places/domain/mocks.dart';
 import 'package:places/screen/sight_card.dart';
 
@@ -11,13 +11,6 @@ class SightLightScreen extends StatefulWidget {
 }
 
 class _SightLightScreenState extends State<SightLightScreen> {
-  static const TextStyle titleStyle = TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.bold,
-    fontSize: 32,
-    height: 36 / 32,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +20,7 @@ class _SightLightScreenState extends State<SightLightScreen> {
         backgroundColor: Colors.transparent,
         title: Text(
           'Список \nинтересных мест',
-          style: titleStyle.copyWith(color: AppColors.secondary),
+          style: AppTextStyles().largeTitle,
         ),
       ),
       body: Padding(
