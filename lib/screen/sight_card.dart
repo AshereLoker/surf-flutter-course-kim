@@ -1,34 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/app_colors.dart';
-import 'package:places/constants/app_text_styles.dart';
+import 'package:places/constants/app_sizes.dart';
+import 'package:places/constants/app_typography.dart';
 import 'package:places/domain/sight.dart';
 
 class SightCard extends StatelessWidget {
-  static const double _cornerRadius = 12;
-  static const double _iconSize = 20;
-  static const double _innerPaddings = 16;
-  static const double _infoTextSpace = 2;
-  static const double _imageHeight = 96;
-  static const double _minHeight = 152;
-  static const List<Color> _gradientColors = <Color>[
-    Color(0xff1f005c),
-    Color(0xff5b0060),
-    Color(0xff870160),
-    Color(0xffac255e),
-    Color(0xffca485c),
-    Color(0xffe16b5c),
-    Color(0xfff39060),
-    Color(0xffffb56b),
-  ];
-
   final Sight sight;
-
-  double get cornerRadius => _cornerRadius;
-  double get iconSize => _iconSize;
-  double get innerPaddings => _innerPaddings;
-  double get infoTextSpace => _infoTextSpace;
-  double get imageHeight => _imageHeight;
-  double get minHeight => _minHeight;
 
   const SightCard({
     Key? key,
@@ -37,23 +14,21 @@ class SightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = AppTextStyles();
-
     return Container(
-      constraints: const BoxConstraints(minHeight: _minHeight),
-      margin: const EdgeInsets.only(top: _innerPaddings),
+      constraints: const BoxConstraints(minHeight: AppSizes.heightMinCard),
+      margin: const EdgeInsets.only(top: AppSizes.commonPadding),
       child: Column(
         children: [
           Container(
-            height: _imageHeight,
-            padding: const EdgeInsets.all(_innerPaddings),
+            height: AppSizes.heightImageCard,
+            padding: const EdgeInsets.all(AppSizes.commonPadding),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: _gradientColors,
+                colors: AppColors.pictureGradient,
                 tileMode: TileMode.mirror,
               ),
               borderRadius: BorderRadius.vertical(
-                top: Radius.circular(_cornerRadius),
+                top: Radius.circular(AppSizes.commonRadius),
               ),
             ),
             child: Row(
@@ -62,27 +37,28 @@ class SightCard extends StatelessWidget {
               children: [
                 Text(
                   sight.type.toLowerCase(),
-                  style: textStyle.small.withBold.withColor(AppColors.white),
+                  style:
+                      AppTypography.smallText14Bold.withColor(AppColors.white),
                 ),
                 Container(
                   decoration: const BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(_cornerRadius / 2),
+                      Radius.circular(AppSizes.radiusIcon),
                     ),
                   ),
-                  height: _iconSize,
-                  width: _iconSize,
+                  height: AppSizes.sizeIcon,
+                  width: AppSizes.sizeIcon,
                 ),
               ],
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(_innerPaddings),
+            padding: const EdgeInsets.all(AppSizes.commonPadding),
             decoration: const BoxDecoration(
               color: AppColors.background,
               borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(_cornerRadius),
+                bottom: Radius.circular(AppSizes.commonRadius),
               ),
             ),
             child: Column(
@@ -90,12 +66,14 @@ class SightCard extends StatelessWidget {
               children: [
                 Text(
                   sight.name,
-                  style: textStyle.text.withColor(AppColors.secondary),
+                  style: AppTypography.textText16Medium
+                      .withColor(AppColors.secondary),
                 ),
-                const SizedBox(height: _infoTextSpace),
+                AppSizes.sizedBoxH2,
                 Text(
                   sight.details,
-                  style: textStyle.small.withColor(AppColors.secondary2),
+                  style: AppTypography.smallText14Regular
+                      .withColor(AppColors.secondary2),
                 ),
               ],
             ),
