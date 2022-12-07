@@ -15,6 +15,7 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       constraints: const BoxConstraints(minHeight: AppSizes.heightMinCard),
       margin: const EdgeInsets.only(top: AppSizes.commonPadding),
       child: Column(
@@ -35,6 +36,7 @@ class SightCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Text(
                   sight.type.toLowerCase(),
                   style:
@@ -54,6 +56,7 @@ class SightCard extends StatelessWidget {
             ),
           ),
           Container(
+
             padding: const EdgeInsets.all(AppSizes.commonPadding),
             decoration: const BoxDecoration(
               color: AppColors.background,
@@ -64,6 +67,7 @@ class SightCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Text(
                   sight.name,
                   style: AppTypography.textText16Medium
@@ -74,7 +78,7 @@ class SightCard extends StatelessWidget {
                   sight.details,
                   style: AppTypography.smallText14Regular
                       .withColor(AppColors.secondary2),
-                ),
+
               ],
             ),
           ),
