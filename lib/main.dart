@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:places/domain/mocks.dart';
+import 'package:places/screen/sight_details.dart';
 import 'package:places/screen/sight_list_screen.dart';
 
 void main() {
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const SightLightScreen(),
+      home: SightDetails(
+        sight: mocks.first,
+      ),
     );
   }
 }
