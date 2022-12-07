@@ -11,12 +11,15 @@ class SightLightScreen extends StatefulWidget {
 }
 
 class _SightLightScreenState extends State<SightLightScreen> {
+
   static const TextStyle titleStyle = TextStyle(
+
     fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
     fontSize: 32,
     height: 36 / 32,
   );
+
 
   @override
   Widget build(BuildContext context) {
